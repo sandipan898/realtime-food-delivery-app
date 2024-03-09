@@ -1,0 +1,20 @@
+{
+  "name": "food-delivery",
+  "version": "1.0.0",
+  "description": "This is a realtime food delivery multi vendor app",
+  "main": "index.js",
+  "author": "Sandipan Das",
+  "license": "MIT",
+  "scripts": {
+    "serve": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "dependencies": {
+    "ejs": "^3.1.9",
+    "express": "^4.18.3",
+    "express-ejs-layouts": "^2.5.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  }
+}
