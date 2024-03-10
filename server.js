@@ -5,11 +5,14 @@ const ejs = require('ejs');
 const expressLayout = require('express-ejs-layouts');
 const path = require('path');
 
-const PORT = process.env.PORT || 3000
+const PORT = process.env.PORT || 3300
 
 app.get('/', (req, res) => {
     res.render('home')
 })
+
+// Assets
+app.use(express.static('public'))
 
 // Set template engine
 app.use(expressLayout)
