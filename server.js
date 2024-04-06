@@ -72,9 +72,7 @@ app.set('views', path.join(__dirname, '/resources/views'));
 app.set('view engine', 'ejs')
 
 // Routes
-
 require('./routes/web')(app);
-
 
 app.listen(PORT, () => {
     console.log(`Server running on PORT: ${PORT}`);
