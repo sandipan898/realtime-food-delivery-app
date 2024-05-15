@@ -9,6 +9,7 @@ const session = require('express-session');
 const flash = require('express-flash');
 const MongoDbStore = require('connect-mongo');
 const passport = require('passport');
+const Emitter = require('events')
 
 // Database connection
 const url = 'mongodb+srv://sandipan:pass123@cluster0.4isjnwc.mongodb.net/food_delivery?retryWrites=true&w=majority'
@@ -44,6 +45,10 @@ app.use(session({
     cookie: { maxAge: 1000 * 60 * 60 * 24 } // 24 hours
 }));
 
+// Event emitter
+const eventEmitter = new Emitter();
+app.set('eventEmitter', eventEmitter)
+
 // Passport config
 const passportinit = require('./app/config/passport');
 passportinit(passport)
@@ -74,6 +79,22 @@ app.set('view engine', 'ejs')
 // Routes
 require('./routes/web')(app);
 
-app.listen(PORT, () => {
+const server = app.listen(PORT, () => {
     console.log(`Server running on PORT: ${PORT}`);
+})
+
+const io = require('socket.io')(server)
+io.on('connection', (socket) => {
+    // Join
+    socket.on('join', (orderId) => {
+        socket.join(orderId)
+    })
+})
+
+eventEmitter.on('orderUpdated', (data) => {
+    io.to(`order_${data.id}`).emit('orderUpdated', data)
+})
+
+eventEmitter.on('orderPlaced', (data) => {
+    io.to('adminRoom').emit('orderPlaced', data)
 })
