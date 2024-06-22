@@ -12,7 +12,7 @@ const passport = require('passport');
 const Emitter = require('events')
 
 // Database connection
-const url = 'mongodb+srv://sandipan:pass123@cluster0.4isjnwc.mongodb.net/food_delivery?retryWrites=true&w=majority'
+const url = process.env.MONGO_CONNECTION_URL
 mongoose
     .connect(url, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => {
@@ -78,6 +78,9 @@ app.set('view engine', 'ejs')
 
 // Routes
 require('./routes/web')(app);
+app.use((req, res) => {
+    res.status(404).render('errors/404.ejs')
+})
 
 const server = app.listen(PORT, () => {
     console.log(`Server running on PORT: ${PORT}`);

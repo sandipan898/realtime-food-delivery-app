@@ -7,7 +7,10 @@
   "license": "MIT",
   "scripts": {
     "serve": "node server.js",
-    "dev": "nodemon server.js"
+    "dev": "nodemon server.js",
+    "development": "npx mix",
+    "watch": "npx mix watch",
+    "production": "npx mix --production"
   },
   "dependencies": {
     "axios": "^1.6.8",
