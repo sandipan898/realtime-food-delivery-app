@@ -40,7 +40,7 @@ function orderController() {
                                 eventEmitter.emit('orderPlaced', ord)
                                 return res.json({message: 'Payment Successful,Order placed successfully!'})
                             }).catch(err => {
-                                console.log(err);
+                                console.log("err", err);
                             })
                         }).catch((err) => {
                             return res.json({message: 'Order placed but Payment Failed, You can still pay in COD mode!'})

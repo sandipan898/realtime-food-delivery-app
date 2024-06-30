@@ -15,11 +15,12 @@ export function postOrder(formObject) {
                 window.location.href = '/orders'
             }, 1000);
         }).catch((err) => {
+            console.log("err", err);
             new Noty({
                 type: 'success',
                 timeout: 1000,
                 progressBar: false,
-                text: err.res.data.message,
+                text: err?.data.message,
             }).show();
         })
 }
