@@ -2,6 +2,7 @@ import axios from "axios";
 import Noty from "noty";
 import { initAdmin } from './admin';
 import moment from 'moment';
+import { initPayment } from './payment';
 
 let addToCart = document.querySelectorAll('.add-to-cart')
 let cartCounter = document.querySelector('#cartCounter')
@@ -74,6 +75,8 @@ function updateStatus(order) {
 }
 
 updateStatus(order);
+
+initPayment();
 
 // Socket
 let socket = io()
