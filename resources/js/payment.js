@@ -5,11 +5,11 @@ import { CardWidget } from "./CardWidget";
 export async function initPayment() {
     const stripe = await loadStripe('pk_test_51GvS3ICXDwJn1WtMaVy1V7FR2RWJuEsy35VlL0w5WYCSoLgj6QQilvFUNZqTY1rbDxUrwg7odmGvVFOJT6VYZPf000LmYwlXPG');
 
-    let card = null;
+    let card = new CardWidget(stripe);
 
     const paymentType = document.getElementById('paymentType')
     paymentType && paymentType.addEventListener('change', (e) => {
-        card = new CardWidget(stripe);
+        // card = new CardWidget(stripe);
         if(e.target.value === 'card') {
             // Display widget
             card.mount()

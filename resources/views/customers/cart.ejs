@@ -1,6 +1,6 @@
 <section class="cart py-16">
     <% if (session.cart) { %>
-    <div class="order container mx-auto px-16 xl:w-1/2">
+    <div class="order container mx-auto xl:px-16 lg:px-16 md:px-16 px-4 xl:w-1/2">
         <div class="flex items-center border-b border-gray-300 pb-4">
             <img src="/img/cart-black.png" alt="cart">
             <h1 class="font-bold ml-4 text-2xl">Order Summary</h1>
@@ -19,7 +19,7 @@
             <% } %>
         </div>
         <hr>
-        <div class="text-right py-4">
+        <div class="xl:text-right lg:text-right md:text-right text-center py-4">
             <div>
                 <span class="text-lg font-bold">Total Amount:</span>
                 <span class="amount text-2xl font-bold ml-2">$<%= session.cart.totalPrice %></span>
@@ -28,15 +28,15 @@
             <div>
                 <form action="/orders" id="payment-form" method="POST" class="mt-12">
                     <div class="relative">
-                        <select id="paymentType" name="paymentType" class="border border-gray-400 p-2 w-1/2 mb-4">
+                        <select id="paymentType" name="paymentType" class="border border-gray-400 p-2 xl:w-1/2 lg:w-1/2 md:w-1/2 w-full mb-4">
                             <option value="cod">Cash on Delivery</option>
                             <option value="card">Pay with Card</option>
                         </select>
                     </div>
-                    <input name="phone" class="border border-gray-400 p-2 w-1/2 mb-4" type="text" placeholder="📞 Phone Number">
-                    <input name="address" class="border border-gray-400 p-2 w-1/2" type="text" placeholder="🏠 Address">
+                    <input name="phone" class="border border-gray-400 p-2 xl:w-1/2 lg:w-1/2 md:w-1/2 w-full mb-4" type="text" placeholder="📞 Phone Number">
+                    <input name="address" class="border border-gray-400 p-2 xl:w-1/2 lg:w-1/2 md:w-1/2 w-full" type="text" placeholder="🏠 Address">
                     <div class="mt-4">
-                        <div id="card-element"></div>
+                        <div class="xl:w-1/2 lg:w-1/2 md:w-1/2 w-full" id="card-element"></div>
                         <button type="submit" class="btn-primary px-6 py-2 rounded-full text-white font-bold mt-6">Order Now</button>
                     </div>
                 </form>
